@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "823330386549",
+    "firebase_url": "https://smartbin-2ab4f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smartbin-2ab4f",
+    "storage_bucket": "smartbin-2ab4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823330386549:android:f0087b225bf57d989c7e3c",
+        "android_client_info": {
+          "package_name": "com.example.clean_eve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823330386549-s6tie6buagagmn3b4euo1p8k7o4sndrb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAciodevoPNXEshFbq0G98Mw2ryG5Hjk0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823330386549-s6tie6buagagmn3b4euo1p8k7o4sndrb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "823330386549-2ei4kbsecev7dajv8rbb7li4al956s3o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cleanEve.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823330386549:android:eeeeea5fdaea66a69c7e3c",
+        "android_client_info": {
+          "package_name": "com.example.my_first_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823330386549-hotuieru99lb9or9cirnaiivdnvdb7l2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_first_app",
+            "certificate_hash": "ce0bb249ce54c36331441808ad8a44782e1f1e7f"
+          }
+        },
+        {
+          "client_id": "823330386549-s6tie6buagagmn3b4euo1p8k7o4sndrb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAciodevoPNXEshFbq0G98Mw2ryG5Hjk0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823330386549-s6tie6buagagmn3b4euo1p8k7o4sndrb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "823330386549-2ei4kbsecev7dajv8rbb7li4al956s3o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cleanEve.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
