@@ -9,7 +9,8 @@ import 'package:my_first_app/styles/app_colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform); //firebase
 
   runApp(MyApp());
 }
