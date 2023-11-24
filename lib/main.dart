@@ -1,10 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-//import 'package:my_first_app/auth/auth.dart';
+import 'package:my_first_app/auth/auth.dart';
 import 'package:my_first_app/firebase_options.dart';
-//import 'package:my_first_app/pages/login_page.dart';
+import 'package:my_first_app/pages/signup_page.dart';
 import 'package:my_first_app/pages/home_page.dart';
-//import 'package:my_first_app/pages/profile.dart';
 import 'package:my_first_app/styles/app_colors.dart';
 
 void main() async {
@@ -22,17 +21,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      home: AuthPage(),
       theme: ThemeData(
           fontFamily: 'Urbanist',
           scaffoldBackgroundColor: AppColors.background),
-      home: const HomePage(),
-      //initialRoute: '/',
-
       routes: {
-        //  '/': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
-        // '/profile':(context) => const Profile(),
+        '/signup': (context) => SignUpPage(),
+        '/home_page': (context) => HomePage(),
       },
     );
   }

@@ -73,7 +73,8 @@ class LoginPage extends StatelessWidget {
                   height: 48,
                   child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacementNamed('/home');
+                        Navigator.of(context)
+                            .pushReplacementNamed('/home_page');
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.amber,
@@ -156,7 +157,9 @@ class LoginPage extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     TextButton(
-                        onPressed: test,
+                        onPressed: () {
+                          Navigator.of(context).pushReplacementNamed('/signup');
+                        },
                         style:
                             TextButton.styleFrom(foregroundColor: Colors.amber),
                         child: Text(
