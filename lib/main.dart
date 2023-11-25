@@ -5,6 +5,7 @@ import 'package:my_first_app/firebase_options.dart';
 import 'package:my_first_app/pages/signup_page.dart';
 import 'package:my_first_app/pages/home_page.dart';
 import 'package:my_first_app/styles/app_colors.dart';
+import 'package:my_first_app/pages/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/signup': (context) => SignUpPage(),
         '/home_page': (context) => HomePage(),
+        '/login_page': (context) => LoginPage(),
       },
     );
   }

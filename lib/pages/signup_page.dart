@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_first_app/pages/login_page.dart';
 
 void test() {
   // ignore: avoid_print
@@ -49,6 +50,10 @@ class _SignUpPageState extends State<SignUpPage> {
 
         //pop loading circle
         Navigator.pop(context);
+        if (mounted) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => LoginPage()));
+        }
       } on FirebaseAuthException catch (e) {
         Navigator.pop(context);
         showDialog(
