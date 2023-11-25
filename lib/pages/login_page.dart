@@ -1,13 +1,76 @@
 import 'package:flutter/material.dart';
-//import 'package:my_first_app/pages/home_page.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:my_first_app/pages/home_page.dart';
 
 void test() {
   // ignore: avoid_print
   print("Clicked");
 }
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  Future<void> _resetPassword(String email) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    Fluttertoast.showToast(
+        msg: "Reset link sent to " + email, gravity: ToastGravity.TOP);
+  }
+
+  Future<void> signInwithGoogle() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final UserCredential userCredential =
+        await auth.signInWithCredential(credential);
+  }
+
+  bool passwordVisible = true;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  //Login method
+  void login() async {
+    showDialog(
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+
+    //try sign in
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      //addUserToDb();
+
+      //pop loading circle
+      if (context.mounted) Navigator.pop(context);
+    }
+
+    //display any errors
+    on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      Fluttertoast.showToast(msg: e.code, gravity: ToastGravity.TOP);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +105,13 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(12))),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.5)),
+                  controller: emailController,
                 ),
                 SizedBox(
                   height: 16,
                 ),
                 TextField(
-                  obscureText: true,
+                  obscureText: passwordVisible,
                   enableSuggestions: false,
                   autocorrect: false,
                   decoration: InputDecoration(
@@ -55,12 +119,27 @@ class LoginPage extends StatelessWidget {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12))),
                       filled: true,
+                      suffixIcon: IconButton(
+                        icon: Icon(passwordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        onPressed: () {
+                          setState(
+                            () {
+                              passwordVisible = !passwordVisible;
+                            },
+                          );
+                        },
+                      ),
                       fillColor: Colors.white.withOpacity(0.5)),
+                  controller: passwordController,
                 ),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                      onPressed: test,
+                      onPressed: () async {
+                        await _resetPassword(emailController.text);
+                      },
                       style:
                           TextButton.styleFrom(foregroundColor: Colors.white),
                       child: Text('Fogot password?')),
@@ -73,8 +152,7 @@ class LoginPage extends StatelessWidget {
                   height: 48,
                   child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed('/home_page');
+                        login();
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.amber,
@@ -92,7 +170,13 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   height: 48,
                   child: ElevatedButton(
-                    onPressed: test,
+                    onPressed: () async {
+                      await signInwithGoogle();
+                      if (mounted) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => HomePage()));
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       foregroundColor: Colors.black,
