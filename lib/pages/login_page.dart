@@ -61,8 +61,8 @@ class _LoginPageState extends State<LoginPage> {
           email: emailController.text, password: passwordController.text);
       //addUserToDb();
 
-      //pop loading circle
-      if (context.mounted) Navigator.pop(context);
+      Navigator.pop(context);
+      Navigator.of(context).pushReplacementNamed('/home_page');
     }
 
     //display any errors
