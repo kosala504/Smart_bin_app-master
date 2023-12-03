@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> signInwithGoogle() async {
     FirebaseAuth auth = FirebaseAuth.instance;
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
     final GoogleSignIn googleSignIn = GoogleSignIn();
 
     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
@@ -39,6 +41,18 @@ class _LoginPageState extends State<LoginPage> {
 
     final UserCredential userCredential =
         await auth.signInWithCredential(credential);
+
+    User? user = userCredential.user;
+
+    if (user != null) {
+      if (userCredential.additionalUserInfo!.isNewUser) {
+        await firestore.collection('Users').doc(user.uid).set({
+          'Name': user.displayName,
+          'uid': user.uid,
+          'image': user.photoURL
+        });
+      }
+    }
   }
 
   bool passwordVisible = true;
