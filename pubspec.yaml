@@ -77,6 +77,15 @@ flutter:
     - assets/images/user icon.webp
     - assets/images/waste home.jpeg
     - assets/images/waste points.jpeg
+    - assets/images/login.jpeg
+    - assets/images/user profile.jpeg
+    - assets/images/rewards.avif
+    - assets/images/dots.jpg
+    - assets/images/bin button.png
+    - assets/images/location.jpeg
+    - assets/images/settings.png
+    - assets/images/QR.png
+    - assets/images/feedback.png
   # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
