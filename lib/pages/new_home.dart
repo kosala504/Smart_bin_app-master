@@ -1,6 +1,10 @@
 //import 'dart:js_interop_unsafe';
 
 import 'package:flutter/material.dart';
+import 'package:my_first_app/pages/bin_Status.dart';
+import 'package:my_first_app/pages/bin_list.dart';
+import 'package:my_first_app/pages/login_page.dart';
+import 'package:my_first_app/pages/profile.dart';
 import 'package:my_first_app/pages/settings.dart';
 //import 'package:percent_indicator/percent_indicator.dart';
 
@@ -141,7 +145,9 @@ class HomePage extends StatelessWidget
                     itemCount: imgData.length,
                             itemBuilder: (context, index) {
                                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    navigateToPage(context, titles[index]);
+                  },
                   child: Container(
                     margin: EdgeInsets.symmetric(vertical: 8,horizontal: 20),
                     decoration: BoxDecoration(
@@ -184,4 +190,51 @@ class HomePage extends StatelessWidget
       
       );
   }
+
+// Function to navigate to the respective page based on the tile clicked
+void navigateToPage(BuildContext context, String pageTitle) {
+  switch (pageTitle) {
+    case "Profile":
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Profile()), // Replace ProfilePage with the actual profile page class
+      );
+      break;
+    case "Bin Details":
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LoginPage()), // Replace BinDetailsPage with the actual bin details page class
+      );
+      break;
+    case "Rewards":
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => binStatus()), // Replace RewardsPage with the actual rewards page class
+      );
+      break;
+    case "Location":
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => binlist()), // Replace LocationPage with the actual location page class
+      );
+      break;
+    case "Scan QR":
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SettingsPage()), // Replace ScanQRPage with the actual scan QR page class
+      );
+      break;
+    case "Feedback":
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()), // Replace FeedbackPage with the actual feedback page class
+      );
+      break;
+    default:
+      break;
+  }
+}
+
+
+
 }
