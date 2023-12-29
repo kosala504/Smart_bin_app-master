@@ -1,10 +1,11 @@
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:my_first_app/pages/login_page.dart';
+//import 'package:my_first_app/pages/login_page.dart';
 //import 'package:my_first_app/auth/auth.dart';
 //import 'package:my_first_app/firebase_options.dart';
 //import 'package:my_first_app/pages/login_page.dart';
 import 'package:my_first_app/pages/new_home.dart';
+import 'package:my_first_app/pages/profile.dart';
 //import 'package:my_first_app/pages/profile.dart';
 import 'package:my_first_app/styles/app_colors.dart';
 
@@ -30,8 +31,8 @@ class MyApp extends StatelessWidget {
 
       routes: {
         //  '/': (context) => LoginPage(),
-        '/home_page': (context) => HomePage(),
-        // '/profile':(context) => const Profile(),
+        //'/home_page': (context) => HomePage(),
+        '/profile':(context) => const Profile(),
       },
     );
   }
