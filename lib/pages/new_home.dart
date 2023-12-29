@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget
     "assets/images/rewards.avif",
     "assets/images/location.jpeg",
     "assets/images/QR.png",
-    "assets/images/feedback.png"
+    "assets/images/feedback-icon.jpeg"
   ];
 
   List titles =[
